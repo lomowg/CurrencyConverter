@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Конвертер валют</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    #converter {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div id="converter">
+    <form method="post" action="">
+        <h2>Конвертер валют</h2>
+        <label for="amount">Сумма:</label>
+        <input type="number" id="amount" name='amount' placeholder="Введите сумму" step="0.01" required>
+
+        <label for="fromCurrency">Из валюты:</label>
+        <select id="fromCurrency" name="fromCurrency" required>
+          <option value="USD">Доллар США (USD)</option>
+          <option value="EUR">Евро (EUR)</option>
+          <!-- Добавить другие валюты -->
+
+        </select>
+
+        <label for="toCurrency">В валюту:</label>
+        <select id="toCurrency" name="toCurrency" required>
+          <option value="USD">Доллар США (USD)</option>
+          <option value="EUR">Евро (EUR)</option>
+          <!-- Добавить другие валюты -->
+        </select>
+
+        <button onclick="" style='margin-top: 10px;'>Конвертировать</button>
+        <h3>Результат:</h3>
+        <div id="result"></div>
+    </form>
+  </div>
+</body>
+</html>
