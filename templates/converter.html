@@ -6,31 +6,58 @@
   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/converter.css') }}">
 </head>
 <body>
-  <div id="converter">
-    <form method="post" action="">
-        <h2>Конвертер валют</h2>
-        <label for="amount">Сумма:</label>
-        <input type="number" id="amount" name='amount' placeholder="Введите сумму" step="0.01" required>
+  <header>
+    <h1>Конвертер валют</h1>
+  </header>
+  <nav>
+    <a href="{{ url_for('index') }}">Главная</a>
+    <a href="#">2 кнопка</a>
+    <a href="#">3 кнопка</a>
+    <a href="{{ url_for('converter') }}">Конвертер валют</a>
+  </nav>
+  <form id="converterForm">
+    <select id="inputCurrency" onchange="convert1()">
+      <option value="usd">USD</option>
+      <option value="eur">EUR</option>
+      <option value="gbp">GBP</option>
+      <!-- Добавьте другие валюты по необходимости -->
+    </select>
+    <input type="number" id="inputValue" step="any" oninput="convert1()">
+  </form>
 
-        <label for="fromCurrency">Из валюты:</label>
-        <select id="fromCurrency" name="fromCurrency" required>
-          <option value="USD">Доллар США (USD)</option>
-          <option value="EUR">Евро (EUR)</option>
-          <!-- Добавить другие валюты -->
+  <form id="resultForm">
+    <select id="outputCurrency" onchange="convert2()">
+      <option value="usd">USD</option>
+      <option value="eur">EUR</option>
+      <option value="gbp">GBP</option>
+      <!-- Добавьте другие валюты по необходимости -->
+    </select>
+    <input type="number" id="outputValue" step="any" oninput="convert2()">
+  </form>
+    <!-- Временные функции -->
+    <script>
+      function convert1() {
+        // Получаем значение из первой формы
+        var inputValue = parseFloat(document.getElementById('inputValue').value);
 
-        </select>
+        // Выполняем конвертацию (в данном случае умножение на 2, как пример)
+        var result = inputValue * 2;
 
-        <label for="toCurrency">В валюту:</label>
-        <select id="toCurrency" name="toCurrency" required>
-          <option value="USD">Доллар США (USD)</option>
-          <option value="EUR">Евро (EUR)</option>
-          <!-- Добавить другие валюты -->
-        </select>
+        // Выводим результат во второй форме
+        document.getElementById('outputValue').value = result;
+      }
+    </script>
+    <script>
+      function convert2() {
+        // Получаем значение из первой формы
+        var outputValue = parseFloat(document.getElementById('outputValue').value);
 
-        <button onclick="" style='margin-top: 10px;'>Конвертировать</button>
-        <h3>Результат:</h3>
-        <div id="result"></div>
-    </form>
-  </div>
+        // Выполняем конвертацию (в данном случае умножение на 2, как пример)
+        var result = outputValue / 2;
+
+        // Выводим результат во второй форме
+        document.getElementById('inputValue').value = result;
+      }
+    </script>
 </body>
 </html>
