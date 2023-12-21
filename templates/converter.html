@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Конвертер валют</title>
   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/converter.css') }}">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
   <header>
@@ -16,47 +17,71 @@
     <a href="{{ url_for('converter') }}">Конвертер валют</a>
   </nav>
   <form id="converterForm">
-    <select id="inputCurrency" onchange="convert1()">
+    <select id="inputCurrency">
       <option value="usd">USD</option>
       <option value="eur">EUR</option>
       <option value="gbp">GBP</option>
       <!-- Добавьте другие валюты по необходимости -->
     </select>
-    <input type="number" id="inputValue" step="any" oninput="convert1()">
+    <input type="number" id="inputValue" step="any" oninput="convert1()" value="0">
   </form>
 
   <form id="resultForm">
-    <select id="outputCurrency" onchange="convert2()">
+    <select id="outputCurrency">
       <option value="usd">USD</option>
       <option value="eur">EUR</option>
       <option value="gbp">GBP</option>
       <!-- Добавьте другие валюты по необходимости -->
     </select>
-    <input type="number" id="outputValue" step="any" oninput="convert2()">
+    <input type="number" id="outputValue" step="any" oninput="convert2()" value="0">
   </form>
     <!-- Временные функции -->
     <script>
       function convert1() {
-        // Получаем значение из первой формы
         var inputValue = parseFloat(document.getElementById('inputValue').value);
+        var inputCurrency = document.getElementById('inputCurrency').value;
+        var outputCurrency = document.getElementById('outputCurrency').value;
 
-        // Выполняем конвертацию (в данном случае умножение на 2, как пример)
-        var result = inputValue * 2;
-
-        // Выводим результат во второй форме
-        document.getElementById('outputValue').value = result;
+        // Отправляем AJAX-запрос на сервер Flask
+        $.ajax({
+          url: '/convert1',
+          type: 'POST',
+          contentType: 'application/json;charset=UTF-8',
+          data: JSON.stringify({
+            inputCurrency: inputCurrency,
+            outputCurrency: outputCurrency,
+            inputValue: inputValue
+          }),
+          success: function(response) {
+            // Обработка успешного ответа от сервера
+            var result = response.result
+            document.getElementById('outputValue').value = result;
+          }
+        });
       }
     </script>
     <script>
       function convert2() {
-        // Получаем значение из первой формы
-        var outputValue = parseFloat(document.getElementById('outputValue').value);
+        var inputValue = parseFloat(document.getElementById('outputValue').value);
+        var inputCurrency = document.getElementById('inputCurrency').value;
+        var outputCurrency = document.getElementById('outputCurrency').value;
 
-        // Выполняем конвертацию (в данном случае умножение на 2, как пример)
-        var result = outputValue / 2;
-
-        // Выводим результат во второй форме
-        document.getElementById('inputValue').value = result;
+        // Отправляем AJAX-запрос на сервер Flask
+        $.ajax({
+          url: '/convert2',
+          type: 'POST',
+          contentType: 'application/json;charset=UTF-8',
+          data: JSON.stringify({
+            inputCurrency: inputCurrency,
+            outputCurrency: outputCurrency,
+            inputValue: inputValue
+          }),
+          success: function(response) {
+            // Обработка успешного ответа от сервера
+            var result = response.result
+            document.getElementById('inputValue').value = result;
+          }
+        });
       }
     </script>
 </body>
