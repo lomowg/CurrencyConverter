@@ -18,20 +18,18 @@
   </nav>
   <form id="converterForm">
     <select id="inputCurrency">
-      <option value="usd">USD</option>
-      <option value="eur">EUR</option>
-      <option value="gbp">GBP</option>
-      <!-- Добавьте другие валюты по необходимости -->
+      {% for code in codes %}
+        <option value="{{ code }}">{{ code|upper }}</option>
+      {% endfor %}
     </select>
     <input type="number" id="inputValue" step="any" oninput="convert1()" value="0">
   </form>
 
   <form id="resultForm">
     <select id="outputCurrency">
-      <option value="usd">USD</option>
-      <option value="eur">EUR</option>
-      <option value="gbp">GBP</option>
-      <!-- Добавьте другие валюты по необходимости -->
+      {% for code in codes %}
+        <option value="{{ code }}">{{ code|upper }}</option>
+      {% endfor %}
     </select>
     <input type="number" id="outputValue" step="any" oninput="convert2()" value="0">
   </form>

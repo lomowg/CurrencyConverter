@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from convert_func import convert
+from cur_codes import CODES
 
 app = Flask(__name__)
 
@@ -11,7 +12,7 @@ def index():
 
 @app.route('/converter', methods=['GET', 'POST'])
 def converter():
-    return render_template('converter.html', convert=convert)
+    return render_template('converter.html', convert=convert, codes=CODES)
 
 @app.route('/convert1', methods=['POST'])
 def convert1():

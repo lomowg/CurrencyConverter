@@ -9,8 +9,8 @@ def convert(input_cur, output_cur, amount, reverse=False):
         return 0
 
     if input_cur == output_cur:
-        multiplier_1 = rates[input_cur].rate / rates[output_cur].rate
-        multiplier_2 = 1 / multiplier_1
+        multiplier_1 = 1
+        multiplier_2 = 1
     elif input_cur == 'RUB':
         multiplier_1 = rates[output_cur].rate
         multiplier_2 = 1/rates[output_cur].rate
