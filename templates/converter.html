@@ -17,7 +17,7 @@
     <a href="{{ url_for('converter') }}">Конвертер валют</a>
   </nav>
   <form id="converterForm">
-    <select id="inputCurrency">
+    <select id="inputCurrency" onchange="convert1()">
       {% for code in codes %}
         <option value="{{ code }}">{{ code|upper }}</option>
       {% endfor %}
@@ -26,7 +26,7 @@
   </form>
 
   <form id="resultForm">
-    <select id="outputCurrency">
+    <select id="outputCurrency" onchange="convert1()">
       {% for code in codes %}
         <option value="{{ code }}">{{ code|upper }}</option>
       {% endfor %}
