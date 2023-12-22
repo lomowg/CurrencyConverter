@@ -21,4 +21,4 @@ def convert(input_cur, output_cur, amount, reverse=False):
         multiplier_1 = rates[input_cur].rate/rates[output_cur].rate
         multiplier_2 = 1/multiplier_1
 
-    return amount*float(multiplier_2) if reverse else amount*float(multiplier_1)
+    return round(amount*float(multiplier_2), 2) if reverse else round(amount*float(multiplier_1), 2)
