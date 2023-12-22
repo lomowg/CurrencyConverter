@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Конвертер валют</title>
-  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/converter.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/converter.css') }}">
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="{{ url_for('static', filename='convert_display_funcs.js') }}"></script>
 </head>
 <body>
   <header>
@@ -33,54 +34,5 @@
     </select>
     <input type="number" id="outputValue" step="any" oninput="convert2()" value="0">
   </form>
-    <!-- Временные функции -->
-    <script>
-      function convert1() {
-        var inputValue = parseFloat(document.getElementById('inputValue').value);
-        var inputCurrency = document.getElementById('inputCurrency').value;
-        var outputCurrency = document.getElementById('outputCurrency').value;
-
-        // Отправляем AJAX-запрос на сервер Flask
-        $.ajax({
-          url: '/convert1',
-          type: 'POST',
-          contentType: 'application/json;charset=UTF-8',
-          data: JSON.stringify({
-            inputCurrency: inputCurrency,
-            outputCurrency: outputCurrency,
-            inputValue: inputValue
-          }),
-          success: function(response) {
-            // Обработка успешного ответа от сервера
-            var result = response.result
-            document.getElementById('outputValue').value = result;
-          }
-        });
-      }
-    </script>
-    <script>
-      function convert2() {
-        var inputValue = parseFloat(document.getElementById('outputValue').value);
-        var inputCurrency = document.getElementById('inputCurrency').value;
-        var outputCurrency = document.getElementById('outputCurrency').value;
-
-        // Отправляем AJAX-запрос на сервер Flask
-        $.ajax({
-          url: '/convert2',
-          type: 'POST',
-          contentType: 'application/json;charset=UTF-8',
-          data: JSON.stringify({
-            inputCurrency: inputCurrency,
-            outputCurrency: outputCurrency,
-            inputValue: inputValue
-          }),
-          success: function(response) {
-            // Обработка успешного ответа от сервера
-            var result = response.result
-            document.getElementById('inputValue').value = result;
-          }
-        });
-      }
-    </script>
 </body>
 </html>
