@@ -14,6 +14,7 @@ def index():
 def converter():
     return render_template('converter.html', convert=convert, codes=CODES)
 
+
 @app.route('/convert1', methods=['POST'])
 def convert1():
     input_currency = request.json['inputCurrency'].upper()

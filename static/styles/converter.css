@@ -49,7 +49,7 @@ form {
     flex-direction: column;
     align-items: center;
     padding: 8px;
-    margin: 100px auto;
+    margin: 50px auto;
     max-width: 600px;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -67,4 +67,17 @@ select, input {
 
 input {
     width: 70%;
+}
+
+#swapButton {
+  margin: 10px auto;
+  display: block;
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+button img {
+  width: 100px;
+  height: 100px;
 }

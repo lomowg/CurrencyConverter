@@ -6,6 +6,7 @@
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/converter.css') }}">
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="{{ url_for('static', filename='convert_display_funcs.js') }}"></script>
+  <script src="{{ url_for('static', filename='swap_curr_func.js') }}"></script>
 </head>
 <body>
   <header>
@@ -25,7 +26,9 @@
     </select>
     <input type="number" id="inputValue" step="any" oninput="convert1()" value="0">
   </form>
-
+  <button id="swapButton" onclick="swapCurrencies()">
+    <img src="{{ url_for('static', filename='images/wings.png') }}">
+  </button>
   <form id="resultForm" onsubmit="return false;">
     <select id="outputCurrency" onchange="convert1()">
       {% for code in codes %}
