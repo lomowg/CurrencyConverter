@@ -1,8 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask import Flask, render_template, request, jsonify
 from convert_func import convert
 from cur_codes import CODES
+import plotly.express as px
 from get_interest_rates import get_interest_rate
-import matplotlib.pyplot as plt
+import pandas as pd
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -38,7 +40,16 @@ def convert2():
 
 @app.route('/interest_rate')
 def interest_rate():
-    pass
+
+    data = pd.DataFrame(get_interest_rate('01.12.2013', datetime.now()), columns=['Дата', '%'])
+
+    fig = px.line(data, x='Дата', y='%', title='Ключевая ставка')
+    fig.update_layout(xaxis_title='Дата', yaxis_title='Ставка (% годовых)', height=600, plot_bgcolor='#DCDCDC', paper_bgcolor='#f4f4f4')
+    fig.update_traces(line=dict(color='#B22222'))
+
+    graph_html = fig.to_html(full_html=False)
+
+    return render_template('interest_rate.html', graph_html=graph_html, data=data)
 
 
 if __name__ == '__main__':

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивный график</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/interest_rate.css') }}">
+    <!-- Подключаем стили Plotly -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+<header>
+    <h1>Ключевая ставка ЦБ РФ</h1>
+  </header>
+
+  <nav>
+    <a href="{{ url_for('index') }}">Главная</a>
+    <a href="{{ url_for('interest_rate') }}">Ключевая ставка ЦБ РФ</a>
+    <a href="#">3 кнопка</a>
+    <a href="{{ url_for('converter') }}">Конвертер валют</a>
+  </nav>
+
+<div id="graph-container">
+    {{ graph_html|safe }}
+</div>
+
+<!-- Вставляем таблицу -->
+<div id="table-container">
+    <table>
+        <tbody>
+        <tr>
+            <th>Дата</th>
+            <th>Ставка</th>
+        </tr>
+        {% for point in data.values %}
+            <tr>
+                <td>{{ point[0].date() }}</td>
+                <td>{{ point[1] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
