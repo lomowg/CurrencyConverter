@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from convert_func import convert
 from cur_codes import CODES
+from get_interest_rates import get_interest_rate
+import matplotlib.pyplot as plt
 
 app = Flask(__name__)
 
@@ -33,6 +35,10 @@ def convert2():
     result = convert(input_currency, output_currency, input_value, reverse=True)
 
     return jsonify(result=result)
+
+@app.route('/interest_rate')
+def interest_rate():
+    pass
 
 
 if __name__ == '__main__':
