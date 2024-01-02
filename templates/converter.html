@@ -15,7 +15,7 @@
   <nav>
     <a href="{{ url_for('index') }}">Главная</a>
     <a href="{{ url_for('interest_rate') }}">Ключевая ставка ЦБ РФ</a>
-    <a href="#">3 кнопка</a>
+    <a href="{{ url_for('imoex_index') }}">Индекс МосБиржи</a>
     <a href="{{ url_for('converter') }}">Конвертер валют</a>
   </nav>
   <form id="converterForm" onsubmit="return false;">

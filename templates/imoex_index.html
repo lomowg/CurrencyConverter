@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Интерактивный график</title>
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/interest_rate.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/imoex_index.css') }}">
     <!-- Подключаем стили Plotly -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
 <header>
-    <h1>Ключевая ставка ЦБ РФ</h1>
+    <h1>Индекс МосБиржи</h1>
   </header>
 
   <nav>
@@ -31,7 +31,7 @@
         <tbody>
         <tr>
             <th>Дата</th>
-            <th>Ставка</th>
+            <th>Значение</th>
         </tr>
         {% for point in data.values %}
             <tr>
