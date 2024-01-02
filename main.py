@@ -1,11 +1,11 @@
-from flask import Flask, render_template, request, jsonify
-from convert_func import convert
-from cur_codes import CODES
+from common.convert_func import convert
+from common.cur_codes import CODES
+from common.get_interest_rates import get_interest_rate
+from common.Moscow_exchange import get_imoex_index
 import plotly.express as px
-from get_interest_rates import get_interest_rate
 import pandas as pd
 from datetime import datetime
-from Moscow_exchange import get_imoex_index
+from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
