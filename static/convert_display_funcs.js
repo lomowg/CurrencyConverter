@@ -3,7 +3,6 @@ function convert1() {
   var inputCurrency = document.getElementById('inputCurrency').value;
   var outputCurrency = document.getElementById('outputCurrency').value;
 
-  // Отправляем AJAX-запрос на сервер Flask
   $.ajax({
     url: '/convert1',
     type: 'POST',
@@ -14,7 +13,6 @@ function convert1() {
       inputValue: inputValue
     }),
     success: function(response) {
-      // Обработка успешного ответа от сервера
       var result = response.result;
       document.getElementById('outputValue').value = result;
     }
@@ -26,7 +24,6 @@ function convert2() {
   var inputCurrency = document.getElementById('inputCurrency').value;
   var outputCurrency = document.getElementById('outputCurrency').value;
 
-  // Отправляем AJAX-запрос на сервер Flask
   $.ajax({
     url: '/convert2',
     type: 'POST',
@@ -37,7 +34,6 @@ function convert2() {
       inputValue: inputValue
     }),
     success: function(response) {
-      // Обработка успешного ответа от сервера
       var result = response.result;
       document.getElementById('inputValue').value = result;
     }

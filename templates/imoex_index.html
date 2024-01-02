@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Интерактивный график</title>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/imoex_index.css') }}">
-    <!-- Подключаем стили Plotly -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
@@ -24,8 +23,6 @@
 <div id="graph-container">
     {{ graph_html|safe }}
 </div>
-
-<!-- Вставляем таблицу -->
 <div id="table-container">
     <table>
         <tbody>

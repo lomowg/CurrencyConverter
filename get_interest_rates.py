@@ -6,18 +6,13 @@ def get_interest_rate(start_day, end_day=None):
     if end_day is None:
         end_day = start_day
 
-    # Отправляем GET-запрос к веб-странице
     response = requests.get(f'https://cbr.ru/hd_base/KeyRate/?UniDbQuery.Posted=True&UniDbQuery.From={start_day}&UniDbQuery.To={end_day}')
 
-    # Проверяем успешность запроса
     if response.status_code == 200:
-        # Используем BeautifulSoup для парсинга HTML
         soup = BeautifulSoup(response.text, 'lxml')
 
-        # Находим тег tbody
         tbody_tag = soup.find('table')
 
-        # Находим все теги tr внутри tbody
         rows = tbody_tag.find_all('tr')
 
         result = []

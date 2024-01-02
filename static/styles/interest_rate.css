@@ -46,7 +46,7 @@ button {
 
 #graph-container {
         width: 70%;
-        margin: auto; /* центрируем контейнер по горизонтали */
+        margin: auto;
         margin-top: 50px;
 }
 
@@ -62,12 +62,12 @@ table {
     margin-top: 10px;
 }
 th, td {
-    border-bottom: 1px solid #dddddd; /* Линии между строками */
+    border-bottom: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
 }
 th {
-    border-top: 1px solid #dddddd; /* Линии между строками и заголовками */
+    border-top: 1px solid #dddddd;
     background-color: #f2f2f2;
 }
 tr:hover {
