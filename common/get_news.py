@@ -24,6 +24,12 @@ def get_articles():
 
         full_image_url = urljoin(url, image_url)
 
-        articles.append({'title': article_title, 'url': full_article_link, 'image': full_image_url})
+        articles.append({'title': article_title, 'url': full_article_link, 'image': full_image_url, 'time': 0})
+
+    article_divs = soup.find_all('div', class_='list-item__info')
+
+    for i in range(len(article_divs)):
+        article_time = article_divs[i].find('div', class_='list-item__date').text
+        articles[i]['time'] = article_time
 
     return articles
