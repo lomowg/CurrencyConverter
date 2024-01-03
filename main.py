@@ -2,6 +2,7 @@ from common.convert_func import convert
 from common.cur_codes import CODES
 from common.get_interest_rates import get_interest_rate
 from common.Moscow_exchange import get_imoex_index
+from common.get_news import get_articles
 import plotly.express as px
 import pandas as pd
 from datetime import datetime
@@ -12,7 +13,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    news_list = get_articles()
+    return render_template('index.html', news_list=news_list)
 
 
 @app.route('/converter', methods=['GET', 'POST'])

@@ -16,5 +16,13 @@
     <a href="{{ url_for('imoex_index') }}">Индекс МосБиржи</a>
     <a href="{{ url_for('converter') }}">Конвертер валют</a>
   </nav>
+  <ul>
+          {% for news in news_list %}
+              <li>
+                  <h2><a href="{{ news.url }}">{{ news.title }}</a></h2>
+                  <img src="{{ news.image }}" alt="Image">
+              </li>
+          {% endfor %}
+      </ul>
 </body>
 </html>

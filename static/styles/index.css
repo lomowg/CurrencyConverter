@@ -1,45 +1,78 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
 }
 
 header {
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-  text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
 }
 
 nav {
-  display: flex;
-  justify-content: space-around;
-  background-color: #555;
-  padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    background-color: #555;
+    padding: 10px;
 }
 
 nav a {
-  color: #fff;
-  text-decoration: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  transition: background-color 0.3s;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
 }
 
 nav a:hover {
-  background-color: #777;
+    background-color: #777;
 }
 
 section {
-  padding: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрирование статей по горизонтали */
 }
 
-button {
-  padding: 10px;
-  background-color: #3498db;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left; /* Выравнивание текста слева */
+    max-width: 1000px; /* Увеличение максимальной ширины блока с новостью */
+    margin: 0 auto; /* Центрирование блока по горизонтали */
+    display: flex;
+    flex-direction: row; /* Изменение направления flex-контейнера на горизонтальное */
+    align-items: flex-start; /* Выравнивание содержимого блока по верхнему краю */
+}
+
+h2 {
+    color: #333;
+}
+
+h2 a {
+    color: black; /* Изменение цвета ссылок внутри h2 */
+}
+
+img {
+    max-width: 50%; /* Уменьшение ширины изображений */
+    height: auto;
+    margin-top: 10px;
+    border-radius: 4px;
+    margin-right: 20px; /* Добавление отступа между изображением и текстом */
+}
+
+li:not(:last-child) {
+    margin-bottom: 30px; /* Добавление отступа между блоками статей */
 }
