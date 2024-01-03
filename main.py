@@ -73,8 +73,16 @@ def imoex_index():
 def download_interest_rate():
     df = pd.DataFrame(get_interest_rate('01.12.2013', datetime.now()), columns=['Дата', '%'])
 
-    csv_filename = 'data.csv'
-    df.to_csv(csv_filename, index=False, sep=',')
+    csv_filename = 'interest_rate.csv'
+    df.to_csv(csv_filename, index=False, sep=',', encoding='windows-1251')
+    return send_file(csv_filename, as_attachment=True)
+
+@app.route('/download_imoex_index')
+def download_imoex_index():
+    df = get_imoex_index(start_day='2013-03-05', end_day=datetime.now())
+
+    csv_filename = 'imoex_index.csv'
+    df.to_csv(csv_filename, index=False, sep=',', encoding='windows-1251')
     return send_file(csv_filename, as_attachment=True)
 
 

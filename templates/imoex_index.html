@@ -22,6 +22,7 @@
 
 <div id="graph-container">
     {{ graph_html|safe }}
+    <a href="{{ url_for('download_imoex_index') }}" id="download-button" class="btn btn-primary">CSV</a>
 </div>
 <div id="table-container">
     <table>
