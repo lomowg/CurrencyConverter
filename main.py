@@ -77,6 +77,7 @@ def download_interest_rate():
     df.to_csv(csv_filename, index=False, sep=',', encoding='windows-1251')
     return send_file(csv_filename, as_attachment=True)
 
+
 @app.route('/download_imoex_index')
 def download_imoex_index():
     df = get_imoex_index(start_day='2013-03-05', end_day=datetime.now())
@@ -87,4 +88,4 @@ def download_imoex_index():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')
