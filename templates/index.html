@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Главная страница</title>
-  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/index.css') }}">
 </head>
 <body>
   <header>
@@ -16,13 +16,15 @@
     <a href="{{ url_for('imoex_index') }}">Индекс МосБиржи</a>
     <a href="{{ url_for('converter') }}">Конвертер валют</a>
   </nav>
+
   <ul>
-          {% for news in news_list %}
-              <li>
-                  <h2><a href="{{ news.url }}">{{ news.title }}</a></h2>
-                  <img src="{{ news.image }}" alt="Image">
-              </li>
-          {% endfor %}
-      </ul>
+    {% for news in news_list %}
+      <li>
+        <h2><a href="{{ news.url }}">{{ news.title }}</a></h2>
+        <p class="article-time">{{ news.time }}</p>
+        <img src="{{ news.image }}" alt="Image">
+      </li>
+    {% endfor %}
+  </ul>
 </body>
 </html>

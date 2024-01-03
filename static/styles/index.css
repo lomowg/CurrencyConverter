@@ -35,7 +35,7 @@ section {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Центрирование статей по горизонтали */
+    align-items: center;
 }
 
 ul {
@@ -49,12 +49,13 @@ li {
     padding: 15px;
     border-radius: 4px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: left; /* Выравнивание текста слева */
-    max-width: 1000px; /* Увеличение максимальной ширины блока с новостью */
-    margin: 0 auto; /* Центрирование блока по горизонтали */
+    text-align: left;
+    max-width: 1000px;
+    margin: 0 auto;
     display: flex;
-    flex-direction: row; /* Изменение направления flex-контейнера на горизонтальное */
-    align-items: flex-start; /* Выравнивание содержимого блока по верхнему краю */
+    flex-direction: row;
+    align-items: flex-start;
+    position: relative;
 }
 
 h2 {
@@ -62,17 +63,27 @@ h2 {
 }
 
 h2 a {
-    color: black; /* Изменение цвета ссылок внутри h2 */
+    color: black;
 }
 
 img {
-    max-width: 50%; /* Уменьшение ширины изображений */
+    max-width: 50%;
     height: auto;
     margin-top: 10px;
     border-radius: 4px;
-    margin-right: 20px; /* Добавление отступа между изображением и текстом */
+    margin-right: 20px;
 }
 
 li:not(:last-child) {
-    margin-bottom: 30px; /* Добавление отступа между блоками статей */
+    margin-bottom: 30px;
+}
+p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 5px;
+    background-color: #555;
+    color: #fff;
+    border-radius: 0 4px 0 4px;
 }
