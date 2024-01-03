@@ -6,7 +6,7 @@ from common.get_news import get_articles
 import plotly.express as px
 import pandas as pd
 from datetime import datetime
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_file
 
 app = Flask(__name__)
 
@@ -67,6 +67,15 @@ def imoex_index():
     graph_html = fig.to_html(full_html=False)
 
     return render_template('imoex_index.html', graph_html=graph_html, data=data)
+
+
+@app.route('/download_interest_rate')
+def download_interest_rate():
+    df = pd.DataFrame(get_interest_rate('01.12.2013', datetime.now()), columns=['Дата', '%'])
+
+    csv_filename = 'data.csv'
+    df.to_csv(csv_filename, index=False, sep=',')
+    return send_file(csv_filename, as_attachment=True)
 
 
 if __name__ == '__main__':
