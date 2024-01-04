@@ -7,5 +7,5 @@ function swapCurrencies() {
   inputCurrency.value = outputCurrency.value;
   outputCurrency.value = tempCurrency;
 
-  convert1();
+  convert_to_second_form();
 }

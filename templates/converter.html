@@ -19,23 +19,23 @@
     <a href="{{ url_for('converter') }}">Конвертер валют</a>
   </nav>
   <form id="converterForm" onsubmit="return false;">
-    <select id="inputCurrency" onchange="convert1()">
+    <select id="inputCurrency" onchange="convert_to_second_form()">
       {% for code in codes %}
         <option value="{{ code }}">{{ code|upper }}</option>
       {% endfor %}
     </select>
-    <input type="number" id="inputValue" step="any" oninput="convert1()" value="0">
+    <input type="number" id="inputValue" step="any" oninput="convert_to_second_form()" value="0">
   </form>
   <button id="swapButton" onclick="swapCurrencies()">
     <img src="{{ url_for('static', filename='images/wings.png') }}">
   </button>
   <form id="resultForm" onsubmit="return false;">
-    <select id="outputCurrency" onchange="convert1()">
+    <select id="outputCurrency" onchange="convert_to_second_form()">
       {% for code in codes %}
         <option value="{{ code }}">{{ code|upper }}</option>
       {% endfor %}
     </select>
-    <input type="number" id="outputValue" step="any" oninput="convert2()" value="0">
+    <input type="number" id="outputValue" step="any" oninput="convert_to_first_form()" value="0">
   </form>
 </body>
 </html>

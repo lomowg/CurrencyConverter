@@ -22,8 +22,8 @@ def converter():
     return render_template('converter.html', convert=convert, codes=CODES)
 
 
-@app.route('/convert1', methods=['POST'])
-def convert1():
+@app.route('/convert_to_second_form', methods=['POST'])
+def convert_to_second_form():
     input_currency = request.json['inputCurrency'].upper()
     output_currency = request.json['outputCurrency'].upper()
     input_value = request.json['inputValue']
@@ -32,8 +32,8 @@ def convert1():
     return jsonify(result=result)
 
 
-@app.route('/convert2', methods=['POST'])
-def convert2():
+@app.route('/convert_to_first_form', methods=['POST'])
+def convert_to_first_form():
     input_currency = request.json['inputCurrency'].upper()
     output_currency = request.json['outputCurrency'].upper()
     input_value = request.json['inputValue']
