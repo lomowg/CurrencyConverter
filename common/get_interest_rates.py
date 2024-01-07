@@ -8,18 +8,20 @@ def get_interest_rate(start_day, end_day=None):
 
     response = requests.get(f'https://cbr.ru/hd_base/KeyRate/?UniDbQuery.Posted=True&UniDbQuery.From={start_day}&UniDbQuery.To={end_day}')
 
-    if response.status_code == 200:
-        soup = BeautifulSoup(response.text, 'lxml')
+    while response.status_code != 200:
+        response = requests.get(f'https://cbr.ru/hd_base/KeyRate/?UniDbQuery.Posted=True&UniDbQuery.From={start_day}&UniDbQuery.To={end_day}')
 
-        tbody_tag = soup.find('table')
+    soup = BeautifulSoup(response.text, 'lxml')
 
-        rows = tbody_tag.find_all('tr')
+    tbody_tag = soup.find('table')
 
-        result = []
-        for row in rows:
-            cells = row.find_all('td')
-            element = tuple(i.text for i in cells)
-            if element:
-                result.append((datetime.strptime(element[0], '%d.%m.%Y'), float(element[1].replace(',', '.'))))
+    rows = tbody_tag.find_all('tr')
 
-        return result
+    result = []
+    for row in rows:
+        cells = row.find_all('td')
+        element = tuple(i.text for i in cells)
+        if element:
+            result.append((datetime.strptime(element[0], '%d.%m.%Y'), float(element[1].replace(',', '.'))))
+
+    return result
